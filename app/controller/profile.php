@@ -3,19 +3,20 @@
 function index() {
   // data
   // Ambil nilai 'id' dari query string
-  $id = isset($_GET['id']) ? $_GET['id'] : null;
+  // $id = isset($_GET['id']) ? $_GET['id'] : null;
 
+  $id = 1;
   // Jika 'id' tidak ada dalam query string, redirect ke halaman dashboard
   if (!$id) {
-      header('Location: '. '/' . SITE_NAME . '/' . 'dashboard');
+      header('Location: '. '/' . SITE_NAME . '/' . 'profile');
       exit;
   }
 
   // data mahasiswa -> mengambil data pertama
-  $mahasiswa = getData("SELECT * FROM mahasiswa WHERE id = $id")[0];
+  $user = getData("SELECT * FROM user WHERE id = $id")[0];
   
   require_once '../app/views/components/header.php';
-  require_once '../app/views/edit.php';
+  require_once '../app/views/profile.php';
   require_once '../app/views/components/footer.php';
 
 }
@@ -29,12 +30,12 @@ function go() {
 
   // Jika 'id' tidak ada dalam query string, redirect ke halaman dashboard
   if (!$id) {
-    header('Location: '. '/' . SITE_NAME . '/' . 'dashboard');
+    header('Location: '. '/' . SITE_NAME . '/' . 'dashboad');
     exit;
   }
 
-  $nama = $_POST['nama'];
-  $gender = $_POST['gender'];
+  $username = $_POST['userbame'];
+  $email = $_POST['email'];
   $nim = $_POST['nim'];
   $jurusan = $_POST['jurusan'];
 
@@ -49,7 +50,7 @@ function go() {
       echo "Data mahasiswa gagal diupdate";
   }
 
- header('Location: '. '/' . SITE_NAME . '/edit?id=' . $id);
+ header('Location: '. '/' . SITE_NAME . '/profile?id=' . $id);
 }
 
 

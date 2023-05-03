@@ -88,6 +88,11 @@ handle_route('GET','/register','register','index');
 
 handle_route('POST','/register/go','register','go');
 
+handle_route('GET','/profile','profile','index');
+
+handle_route('POST','/profile/go','profile','go');
+
+
 
 //  ------------------------ROUTES WEB-------------------------------//
 /*

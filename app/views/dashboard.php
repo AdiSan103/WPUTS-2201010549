@@ -72,7 +72,8 @@
                                     <td class="d-flex ">
                                       <a href="<?= '/'.SITE_NAME.'/edit?id=' . $item['id']  ?>" class="btn btn-warning py-2 px-4 btn-fw text-white">Edit</a>
                                       <a href="<?= '/'.SITE_NAME.'/detail?id=' . $item['id']  ?>" class="btn btn-success py-2 px-4 btn-fw text-white">Detail</a>
-                                      <form action="" method="">
+                                      <form action="<?= '/'.SITE_NAME.'/delete/go'  ?>" method="POST">
+                                        <input type="hidden" name="id" value="<?= $item['id']; ?>">
                                         <button type="submit" class="btn btn-danger py-2 px-4 btn-fw text-white" onclick="return confirm('Yakin Hapus Data?')">Hapus</button>
                                       </form>
                                     </td>

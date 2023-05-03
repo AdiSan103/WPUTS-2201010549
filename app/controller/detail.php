@@ -1,9 +1,6 @@
 <?php 
 
 function index() {
-
-  // mysqli
-  global $requestDB;
   // data
   // Ambil nilai 'id' dari query string
   $id = isset($_GET['id']) ? $_GET['id'] : null;

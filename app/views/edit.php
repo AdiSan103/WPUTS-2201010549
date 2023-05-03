@@ -10,26 +10,27 @@
             <p class="card-description">
               Formulir
             </p>
-            <form class="forms-sample" method="POST" action="<?= '/'.SITE_NAME.'/add/go' ?>">
+            <form class="forms-sample" method="POST" action="<?= '/'.SITE_NAME.'/edit/go' ?>">
+              <input type="hidden" name="id" value="<?= $mahasiswa['id'] ?>">
               <div class="form-group">
                 <label for="exampleInputUsername1">Username</label>
-                <input required type="text" class="form-control" id="exampleInputUsername1" placeholder="Username" name="nama">
+                <input required type="text" class="form-control" id="exampleInputUsername1" placeholder="Username" name="nama" value="<?= $mahasiswa['nama'] ?>">
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">NIM</label>
-                <input required type="number" class="form-control" id="exampleInputEmail1" placeholder="2321" name="nim">
+                <input required type="number" class="form-control" id="exampleInputEmail1" placeholder="2321" name="nim" value="<?= $mahasiswa['nim'] ?>">
               </div>
               <div>
                 <p>Gender</p>
                 <div class="form-group px-4">
                   <div class="form-check">
-                    <input required class="form-check-input" type="radio" name="gender" id="gender1" value="1">
+                    <input class="form-check-input" type="radio" name="gender" id="gender1" value="1" <?php if ($mahasiswa['gender'] == 1) { echo ' checked'; } ?>>
                     <label class="form-check-label" for="gender1">
                       Man
                     </label>
                   </div>
                   <div class="form-check">
-                    <input required class="form-check-input" type="radio" name="gender" id="gender2" checked value="0">
+                    <input class="form-check-input" type="radio" name="gender" id="gender2" value="0" <?php if ($mahasiswa['gender'] == 0) { echo ' checked'; } ?>>
                     <label class="form-check-label" for="gender2">
                       Woman
                     </label>
@@ -38,10 +39,10 @@
               </div>
               <div class="form-group">
               <select required class="form-select" aria-label="jurusan" name="jurusan">
-                <option selected>Pilih Jurusan</option>
-                <option value="MTI">MTI</option>
-                <option value="DKV">DKV</option>
-                <option value="KAB">KAB</option>
+                <option >Pilih Jurusan</option>
+                <option value="MTI" <?php echo $mahasiswa['jurusan'] == 'MTI' ? 'selected' : ''; ?>>MTI</option>
+                <option value="DKV" <?php echo $mahasiswa['jurusan'] == 'DKV' ? 'selected' : ''; ?>>DKV</option>
+                <option value="KAB" <?php echo $mahasiswa['jurusan'] == 'KAB' ? 'selected' : ''; ?>>KAB</option>
               </select>
               </div>
               <button type="submit" class="btn btn-primary me-2">Submit</button>

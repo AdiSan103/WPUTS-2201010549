@@ -360,6 +360,12 @@
           </li>
           <li class="nav-item nav-category">User</li>
           <li class="nav-item">
+            <a class="nav-link" href="<?= '/'.SITE_NAME.'/profile'?>">
+              <i class="menu-icon mdi mdi-account-circle-outline"></i>
+              <span class="menu-title">Profile</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="<?= '/'.SITE_NAME.'/logout'?>" onclick="return confirm('yakin meninggalkan aplikasi?')">
               <i class="menu-icon mdi mdi-account-circle-outline"></i>
               <span class="menu-title">Log Out</span>
