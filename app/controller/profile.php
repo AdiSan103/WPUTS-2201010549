@@ -14,6 +14,9 @@ function index() {
 
   // data mahasiswa -> mengambil data pertama
   $user = getData("SELECT * FROM user WHERE id = $id")[0];
+
+  // pasang alert
+  alert('alert','success','success','Update Berhasil!','Profil berhasil di perbaharui');
   
   require_once '../app/views/components/header.php';
   require_once '../app/views/profile.php';
@@ -22,6 +25,7 @@ function index() {
 }
 
 function go() {
+
   // koneksi databsae
   global $requestDB;
 
@@ -34,23 +38,40 @@ function go() {
     exit;
   }
 
-  $username = $_POST['userbame'];
-  $email = $_POST['email'];
-  $nim = $_POST['nim'];
-  $jurusan = $_POST['jurusan'];
+  // cek konfirmasi  password
+  $password = $_POST['password'];
+  $password_confirmation = $_POST['password_confirmation'];
 
-
-  // query update data mahasiswa
-  $query = "UPDATE mahasiswa SET nama='$nama', gender='$gender', nim='$nim', jurusan='$jurusan' WHERE id='$id'";
-  $result = mysqli_query($requestDB, $query);
-
-  if($result) {
-    echo "Data mahasiswa berhasil diupdate";
+  // apakah ada password 
+  if(!empty($password)) {
+    // cek password 
+    if($password != $password_confirmation) {
+      echo 'passoword tidak sama';
+      header('Location: '. '/' . SITE_NAME . '/profile?id=' . $id);
+      exit();
+    }
   } else {
-      echo "Data mahasiswa gagal diupdate";
+    // karena tidak ada password baru maka masukkan password lama
+    $query = "SELECT * FROM user WHERE id = $id";
+    $password = getData($query)[0]['password'];
   }
 
- header('Location: '. '/' . SITE_NAME . '/profile?id=' . $id);
+  // variabel 
+  $username = $_POST['username'];
+  $email = $_POST['email'];
+
+  // query update data mahasiswa
+  $query = "UPDATE user SET username='$username', email='$email', password='$password' WHERE id='$id'";
+
+  $result = mysqli_query($requestDB, $query);
+
+  // query berhasil
+  if($result) {
+    // set session
+    $_SESSION['alert'] = 'success';
+  }
+
+  header('Location: '. '/' . SITE_NAME . '/profile?id=' . $id);
 }
 
 

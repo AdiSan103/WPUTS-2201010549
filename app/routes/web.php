@@ -55,6 +55,19 @@ function handle_route($method, $route, $controller, $cntrl_func) {
  }
 }
 
+// cek cookie
+function checkCookie($email) {
+  $user = getData("SELECT * FROM user WHERE email = '$email'" );
+  
+  // tidak ada data, maka balik ke login
+  if(empty($sql[0])) {
+    header('Location: '. '/' . SITE_NAME . '/' . 'login');  
+  } else {
+    return TRUE;
+  }
+
+}
+
 //  ------------------------ROUTES WEB-------------------------------//
 
 /* 
@@ -64,21 +77,8 @@ function handle_route($method, $route, $controller, $cntrl_func) {
 | handle_route('METHOD','/_path','/app/controller','function_in_controller');
 */
 
+// route tidak perlu login
 handle_route('GET','/','home','index');
-
-handle_route('GET','/dashboard','dashboard','index');
-
-handle_route('GET','/add','add','index');
-
-handle_route('GET','/detail','detail','index');
-
-handle_route('POST','/add/go','add','go');
-
-handle_route('GET','/edit','edit','index');
-
-handle_route('POST','/edit/go','edit','go');
-
-handle_route('POST','/delete/go','delete','go');
 
 handle_route('GET','/login','login','index');
 
@@ -88,10 +88,31 @@ handle_route('GET','/register','register','index');
 
 handle_route('POST','/register/go','register','go');
 
-handle_route('GET','/profile','profile','index');
+// cek cookie 'login_user'
+if(isset($_COOKIE['login_user']) && checkCookie($_COOKIE['login_user']) ) {
 
-handle_route('POST','/profile/go','profile','go');
+  // isi function ini untuk route harus autentifikasi login admin
+  handle_route('GET','/dashboard','dashboard','index');
 
+  handle_route('GET','/add','add','index');
+
+  handle_route('GET','/detail','detail','index');
+
+  handle_route('POST','/add/go','add','go');
+
+  handle_route('GET','/edit','edit','index');
+
+  handle_route('POST','/edit/go','edit','go');
+
+  handle_route('POST','/delete/go','delete','go');
+
+  handle_route('GET','/profile','profile','index');
+
+  handle_route('POST','/profile/go','profile','go');
+
+  handle_route('POST','/logout/go','logout','go');
+
+}
 
 
 //  ------------------------ROUTES WEB-------------------------------//

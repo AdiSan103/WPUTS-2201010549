@@ -14,6 +14,9 @@ function index() {
   // data mahasiswa -> mengambil data pertama
   $mahasiswa = getData("SELECT * FROM mahasiswa WHERE id = $id")[0];
   
+  // pasang alert
+  alert('alert','success','success','Update Berhasil!','Profil berhasil di perbaharui');
+
   require_once '../app/views/components/header.php';
   require_once '../app/views/edit.php';
   require_once '../app/views/components/footer.php';
@@ -44,7 +47,8 @@ function go() {
   $result = mysqli_query($requestDB, $query);
 
   if($result) {
-    echo "Data mahasiswa berhasil diupdate";
+    // set session
+    $_SESSION['alert'] = 'success';
   } else {
       echo "Data mahasiswa gagal diupdate";
   }

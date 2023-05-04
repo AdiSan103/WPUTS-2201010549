@@ -16,7 +16,8 @@ function go() {
 
   // Jalankan query untuk menghapus data mahasiswa
   if (mysqli_query($requestDB, $sql)) {
-    echo "Data mahasiswa berhasil dihapus";
+    // set session
+    $_SESSION['alert'] = 'delete';
   } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($requestDB);
   }

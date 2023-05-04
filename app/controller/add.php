@@ -25,7 +25,7 @@ function go() {
 
   // Jalankan query
   if (mysqli_query($requestDB, $sql)) {
-   echo "Data mahasiswa berhasil ditambahkan.";
+   $_SESSION['alert'] = 'success';
   } else {
    echo "Error: " . $sql . "<br>" . mysqli_error($requestDB);
   }
@@ -34,6 +34,7 @@ function go() {
   mysqli_close($requestDB);
 
   header('Location: '. '/' . SITE_NAME . '/' . 'dashboard');
+
  }
 
 
