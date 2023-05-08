@@ -60,7 +60,7 @@ function checkCookie($email) {
   $user = getData("SELECT * FROM user WHERE email = '$email'" );
   
   // tidak ada data, maka balik ke login
-  if(empty($sql[0])) {
+  if(empty($user[0])) {
     header('Location: '. '/' . SITE_NAME . '/' . 'login');  
   } else {
     return TRUE;
