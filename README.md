@@ -1,9 +1,17 @@
-# TUGAS PEMPROGRAMAN WEBSITE
+# PROJECT SEDERHANA DAFTAR MAHASISWA
 
-## beberapa hal yang harus di lakukan
+*PENTING* program saya dijalankan dalam kondisi internet aktif, karena ada beberapa resource cdn online, terima kasih atas pemaklumannya ^^
 
-1. menjalankan xampp -> apache serve dan mysql
+saya membuat sistem Manajemen Mahasiswa (CRUD) dalam sebuah kampus
 
-2. buka tab web browser link (http://localhost/tugas_uts_semester2/database.php)
+untuk nama folder sesuaikan dengan 'app/config/config.php' -> samakan dengan define(SITE_NAME,'nama_folder_projectmu')
 
-3. buka tab web browser link (http://localhost/tugas_uts_semester2)
+saya menerapkan konsep MVC sederhana
+
+## apa yang harus dilakukan pertama kali?
+
+1. run dalam command prompt : php migration.php or manual dengan /localhost/app/database/migrations.php
+
+2. menuju url local_path_server/login
+
+3. masukkan email : admin@gmail.com dan password : 12345
