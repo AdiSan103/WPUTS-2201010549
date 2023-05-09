@@ -2,18 +2,13 @@
 // hubungkan dengan file koneksi.php
 require_once('koneksi.php');
 // pagination
-$halaman = 1;
-$batas = 5; // jumlah data per halaman
-$mulai_dari = ($halaman-1) * $batas;
 
 // 1. sistem read data
 function read_data() {
 
   global $mysqli;
-  global $mulai_dari;
-  global $batas;
 
-  $query = "SELECT * FROM tb_buku_2201010538 LIMIT $mulai_dari, $batas";
+  $query = "SELECT * FROM tb_buku_2201010538";
   $result = mysqli_query($mysqli, $query);
 
   if ($result && mysqli_num_rows($result) > 0) {
@@ -55,13 +50,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 function read_by_search() {
   global $mysqli;
   global $mulai_dari;
-  global $batas;
 
   // Retrieve search query parameter
   $search_query = isset($_GET['search']) ? $_GET['search'] : '';
 
   // Prepare and execute search query
-  $sql = "SELECT * FROM tb_buku_2201010538 WHERE Judul_buku_2201010538 LIKE '%$search_query%' LIMIT $mulai_dari, $batas";
+  $sql = "SELECT * FROM tb_buku_2201010538 WHERE Judul_buku_2201010538 LIKE '%$search_query%'";
   $result = mysqli_query($mysqli, $sql);
 
   // Fetch search results
@@ -82,13 +76,6 @@ if (isset($_GET['search'])) {
   $data_tabel = read_data();
 }
 
-
-// 4. sistem halaman buku
-
-// pagination bootstrap
-$query_jumlah = mysqli_query($mysqli, "SELECT COUNT(*) AS jumlah FROM tb_buku_2201010538");
-$jumlah_data = mysqli_fetch_array($query_jumlah)['jumlah'];
-$jumlah_halaman = ceil($jumlah_data / $batas);
 
 ?>
 
@@ -182,23 +169,6 @@ $jumlah_halaman = ceil($jumlah_data / $batas);
       </tbody>
     </table>
     <!-- pagination -->
-    <nav aria-label="...">
-          <ul class="pagination">
-            <li class="page-item '.($halaman <= 1 ? 'disabled' : '').'">
-              <a class="page-link" href="?halaman='.($halaman-1).'" tabindex="-1" aria-disabled="'.($halaman <= 1 ? 'true' : 'false').'">Previous</a>
-            </li>';
-
-  <?php 
-  for ($i=1; $i<=$jumlah_halaman; $i++) {
-    $link_active = ($i == $halaman) ? 'active' : '';
-    echo '<li class="page-item '.$link_active.'"><a class="page-link" href="?halaman='.$i.'">'.$i.'</a></li>';
-  } ?>
-
-  <li class="page-item '.($halaman >= $jumlah_halaman ? 'disabled' : '').'">
-          <a class="page-link" href="?halaman='.($halaman+1).'">Next</a>
-        </li>
-      </ul>
-    </nav>
 
   </div>
 

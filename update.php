@@ -17,17 +17,6 @@ if (isset($_GET['id'])) {
   // cek apakah data ditemukan
   if (mysqli_num_rows($result) > 0) {
     // tampilkan data dalam bentuk tabel
-    // echo "<table>";
-    // while ($row = mysqli_fetch_assoc($result)) {
-    //   echo "<tr><td>ID Buku:</td><td>" . $row['ID_buku_2201010538'] . "</td></tr>";
-    //   echo "<tr><td>Judul Buku:</td><td>" . $row['Judul_buku_2201010538'] . "</td></tr>";
-    //   echo "<tr><td>Kategori Buku:</td><td>" . $row['Kategori_buku_2201010538'] . "</td></tr>";
-    //   echo "<tr><td>Penerbit:</td><td>" . $row['Penerbit_2201010538'] . "</td></tr>";
-    //   echo "<tr><td>Penulis:</td><td>" . $row['Penulis_2201010538'] . "</td></tr>";
-    //   echo "<tr><td>Stok:</td><td>" . $row['Stok_2201010538'] . "</td></tr>";
-    //   echo "<tr><td>Harga:</td><td>" . $row['Harga_2201010538'] . "</td></tr>";
-    // }
-    // echo "</table>";
     $data = mysqli_fetch_assoc($result);
   } else {
     // jika data tidak ditemukan
@@ -70,6 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo "Update data buku gagal";
   }
 }
+
 ?>
 
 <?php 
