@@ -14,4 +14,4 @@ saya menerapkan konsep MVC sederhana
 
 2. menuju url local_path_server/login
 
-3. masukkan email : admin@gmail.com dan password : 12345
+3. masukkan email : admin@gmail.com dan password : admin1234

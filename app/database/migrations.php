@@ -53,7 +53,7 @@ if ($conn->query($sql) === TRUE) {
   echo "Error creating table: " . $conn->error;
 }
 // define
-$sql = "INSERT INTO `user` (`id`, `username`, `password`, `email`, `created_at`) VALUES (1, 'admin1234', '12345', 'admin@gmail.com', '2023-05-03 14:40:42')";
+$sql = "INSERT INTO `user` (`id`, `username`, `password`, `email`, `created_at`) VALUES (1, 'admin1234', 'admin1234', 'admin@gmail.com', '2023-05-03 14:40:42')";
 
 // execute the SQL query
 if (mysqli_query($conn, $sql)) {
