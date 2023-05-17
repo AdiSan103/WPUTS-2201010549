@@ -7,48 +7,45 @@ require('koneksi.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   // $_POST
-  $id_buku = $_POST['id_buku'];
-  $judul_buku = $_POST['judul_buku'];
-  $kategori_buku = $_POST['kategori_buku'];
-  $penerbit = $_POST['penerbit'];
-  $penulis = $_POST['penulis'];
-  $stok = $_POST['stok'];
-  $harga = $_POST['harga'];
+  $nim = $_POST['nim'];
+  $nama = $_POST['nama'];
+  $jurusan = $_POST['jurusan'];
+  $prodi = $_POST['prodi'];
+  $gender = $_POST['gender'];
+  $tanggal_lahir = $_POST['tanggal_lahir'];
+  $tanggal_bergabung = $_POST['tanggal_bergabung'];
 
-  // var_dump($id_buku);
+  // var_dump($nim);
   // die();
 
   //menambah data baru
-  $sql = "INSERT INTO tb_buku_2201010538 (
-      ID_buku_2201010538, 
-      Judul_buku_2201010538, 
-      Kategori_buku_2201010538, 
-      Penerbit_2201010538, 
-      Penulis_2201010538, 
-      Stok_2201010538, 
-      Harga_2201010538
+  $sql = "INSERT INTO tb_mahasiswa (
+      nim, 
+      nama, 
+      jurusan, 
+      prodi, 
+      gender, 
+      tanggal_lahir, 
+      tanggal_bergabung
     ) VALUES (
-      '$id_buku', 
-      '$judul_buku', 
-      '$kategori_buku', 
-      '$penerbit', 
-      '$penulis', 
-      '$stok', 
-      '$harga'
+      '$nim', 
+      '$nama', 
+      '$jurusan', 
+      '$prodi', 
+      '$gender', 
+      '$tanggal_lahir', 
+      '$tanggal_bergabung'
     )";
 
-// $id_buku, 
-// $judul_buku, 
-// $kategori_buku, 
-// $penerbit, 
-// $penulis, 
-// $stok, 
-// $harga
-
-  // 'B001', 'Judul Buku', 'Fiksi', 'Penerbit', 'Penulis', 5, 50000
-
   if (mysqli_query($mysqli, $sql)) {
-    echo "Data berhasil ditambahkan";
+    // life hack : diisi untuk memunculkan alert
+    echo "<div></div>";
+    // alert
+    echo "
+    <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js'></script>
+    <link href='https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css' rel='stylesheet'>
+    <script>Swal.fire('Berhasil!','Data Berhasil Di Tambahkan!','success')</script>
+    ";
   } 
 
   // berhenti mysqli
@@ -64,40 +61,48 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
  <!-- konten -->
  <div class="container">
-  <h5 class="text-center mt-5">TAMBAH BUKU</h5>
+  <h5 class="text-center mt-5">TAMBAH MAHASISWA</h5>
   <form class="shadow rounded py-4 px-3 my-4" action="create.php" method="POST">
     <div class="mb-3">
-      <label for="id_buku" class="form-label">ID Buku</label>
-      <input required type="text" class="form-control" id="id_buku" name="id_buku">
+      <label for="nim" class="form-label">nim</label>
+      <input required type="text" class="form-control" id="nim" name="nim">
     </div>
     <div class="mb-3">
-      <label for="judul_buku" class="form-label">Judul Buku</label>
-      <input required type="text" class="form-control" id="judul_buku" name="judul_buku">
+      <label for="nama" class="form-label">nama</label>
+      <input required type="text" class="form-control" id="nama" name="nama">
     </div>
     <div class="mb-3">
-      <label for="kategori_buku" class="form-label">Kategori Buku</label>
-      <select class="form-select" id="kategori_buku" name="kategori_buku">
+      <label for="jurusan" class="form-label">jurusan</label>
+      <select class="form-select" id="jurusan" name="jurusan">
         <option selected disabled>Choose...</option>
-        <option value="Hobi">Hobi</option>
-        <option value="Komputer">Komputer</option>
-        <option value="Fiksi">Fiksi</option>
+        <option value="TI-MTI">TI-MTI</option>
+        <option value="TI-KAB">TI-KAB</option>
+        <option value="DKV">DKV</option>
       </select>
     </div>
     <div class="mb-3">
-      <label for="penerbit" class="form-label">Penerbit</label>
-      <input required type="text" class="form-control" id="penerbit" name="penerbit">
+      <label for="prodi" class="form-label">prodi</label>
+      <select class="form-select" id="prodi" name="prodi">
+        <option selected disabled>Choose...</option>
+        <option value="TI">TI</option>
+        <option value="DKV">DKV</option>
+      </select>
     </div>
     <div class="mb-3">
-      <label for="penulis" class="form-label">Penulis</label>
-      <input required type="text" class="form-control" id="penulis" name="penulis">
+      <label for="gender" class="form-label">gender</label>
+      <select class="form-select" id="gender" name="gender">
+        <option selected disabled>Choose...</option>
+        <option value="laki-laki">laki-laki</option>
+        <option value="perempuan">perempuan</option>
+      </select>
     </div>
     <div class="mb-3">
-      <label for="stok" class="form-label">Stok</label>
-      <input required type="number" class="form-control" id="stok" name="stok">
+      <label for="tanggal_lahir" class="form-label">tanggal_lahir</label>
+      <input required type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir">
     </div>
     <div class="mb-3">
-      <label for="harga" class="form-label">Harga</label>
-      <input required type="number" class="form-control" id="harga" name="harga">
+      <label for="tanggal_bergabung" class="form-label">tanggal_bergabung</label>
+      <input required type="date" class="form-control" id="tanggal_bergabung" name="tanggal_bergabung">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>

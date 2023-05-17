@@ -12,7 +12,7 @@
     <!-- css -->
     <link rel="stylesheet" href="src/css/index.css">
 
-    <title>WEBSITE PERPUSATAKAN BUKU</title>
+    <title>WEBSITE MAHASISWA</title>
   </head>
   <body>
 

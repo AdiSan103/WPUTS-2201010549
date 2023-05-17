@@ -5,7 +5,7 @@
 $DB_HOST = 'localhost';
 $DB_USER = 'root';
 $DB_PASS = '';
-$DB_NAME = 'db_2201010538';
+$DB_NAME = 'db_kampus';
 $mysqli = new mysqli($DB_HOST, $DB_USER, $DB_PASS);
 
 if ($mysqli->connect_error) {
@@ -13,7 +13,7 @@ if ($mysqli->connect_error) {
 }
 
 // Membuat database
-$sql = "CREATE DATABASE IF NOT EXISTS db_2201010538";
+$sql = "CREATE DATABASE IF NOT EXISTS db_kampus";
 if (mysqli_query($mysqli, $sql)) {
     echo "Database berhasil dibuat";
     echo "<br>";
@@ -24,17 +24,17 @@ if (mysqli_query($mysqli, $sql)) {
 
 require_once('koneksi.php');
 // Menggunakan database yang telah dibuat
-mysqli_select_db($mysqli, "db_2201010538");
+mysqli_select_db($mysqli, "db_kampus");
 
 // Membuat tabel
-$sql = "CREATE TABLE IF NOT EXISTS tb_buku_2201010538 (
-  ID_buku_2201010538 CHAR(10) PRIMARY KEY,
-  Judul_buku_2201010538 VARCHAR(100),
-  Kategori_buku_2201010538 VARCHAR(50),
-  Penerbit_2201010538 VARCHAR(100),
-  Penulis_2201010538 VARCHAR(100),
-  Stok_2201010538 INT,
-  Harga_2201010538 INT
+$sql = "CREATE TABLE IF NOT EXISTS tb_mahasiswa (
+  nim CHAR(10) PRIMARY KEY,
+  nama VARCHAR(100),
+  jurusan VARCHAR(50),
+  prodi VARCHAR(100),
+  gender VARCHAR(100),
+  tanggal_lahir DATE,
+  tanggal_bergabung DATE
 )";
 
 if (mysqli_query($mysqli, $sql)) {

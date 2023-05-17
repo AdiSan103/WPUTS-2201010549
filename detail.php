@@ -7,10 +7,10 @@ require_once('koneksi.php');
 if (isset($_GET['id'])) {
 
   // sanitize data
-  $id_buku = mysqli_real_escape_string($mysqli, $_GET['id']);
+  $nim = mysqli_real_escape_string($mysqli, $_GET['id']);
 
   // query untuk ambil data
-  $sql = "SELECT * FROM tb_buku_2201010538 WHERE ID_buku_2201010538 = '$id_buku'";
+  $sql = "SELECT * FROM tb_mahasiswa WHERE nim = '$nim'";
 
   // eksekusi query
   $result = mysqli_query($mysqli, $sql);
@@ -20,13 +20,13 @@ if (isset($_GET['id'])) {
     // tampilkan data dalam bentuk tabel
     // echo "<table>";
     // while ($row = mysqli_fetch_assoc($result)) {
-    //   echo "<tr><td>ID Buku:</td><td>" . $row['ID_buku_2201010538'] . "</td></tr>";
-    //   echo "<tr><td>Judul Buku:</td><td>" . $row['Judul_buku_2201010538'] . "</td></tr>";
-    //   echo "<tr><td>Kategori Buku:</td><td>" . $row['Kategori_buku_2201010538'] . "</td></tr>";
-    //   echo "<tr><td>Penerbit:</td><td>" . $row['Penerbit_2201010538'] . "</td></tr>";
-    //   echo "<tr><td>Penulis:</td><td>" . $row['Penulis_2201010538'] . "</td></tr>";
-    //   echo "<tr><td>Stok:</td><td>" . $row['Stok_2201010538'] . "</td></tr>";
-    //   echo "<tr><td>Harga:</td><td>" . $row['Harga_2201010538'] . "</td></tr>";
+    //   echo "<tr><td>nim:</td><td>" . $row['nim'] . "</td></tr>";
+    //   echo "<tr><td>nama:</td><td>" . $row['nama'] . "</td></tr>";
+    //   echo "<tr><td>jurusan:</td><td>" . $row['jurusan'] . "</td></tr>";
+    //   echo "<tr><td>prodi:</td><td>" . $row['prodi'] . "</td></tr>";
+    //   echo "<tr><td>gender:</td><td>" . $row['gender'] . "</td></tr>";
+    //   echo "<tr><td>tanggal_lahir:</td><td>" . $row['tanggal_lahir'] . "</td></tr>";
+    //   echo "<tr><td>tanggal_bergabung:</td><td>" . $row['tanggal_bergabung'] . "</td></tr>";
     // }
     // echo "</table>";
     $data = mysqli_fetch_assoc($result);
@@ -49,35 +49,35 @@ if (isset($_GET['id'])) {
 
  <!-- konten -->
  <div class="container">
-  <h5 class="text-center mt-5">DETAIL BUKU</h5>
+  <h5 class="text-center mt-5">DETAIL MAHASISWA</h5>
   <form class="shadow rounded py-4 px-3 my-4">
     <div class="mb-3">
-      <label for="id_buku" class="form-label">ID Buku</label>
-      <input readonly type="text" class="form-control" id="id_buku" name="id_buku" value="<?= $data['ID_buku_2201010538'] ?>">
+      <label for="nim" class="form-label">nim</label>
+      <input readonly type="text" class="form-control" id="nim" name="nim" value="<?= $data['nim'] ?>">
     </div>
     <div class="mb-3">
-      <label for="judul_buku" class="form-label">Judul Buku</label>
-      <input readonly type="text" class="form-control" id="judul_buku" name="judul_buku" value="<?= $data['Judul_buku_2201010538'] ?>">
+      <label for="nama" class="form-label">nama</label>
+      <input readonly type="text" class="form-control" id="nama" name="nama" value="<?= $data['nama'] ?>">
     </div>
     <div class="mb-3">
-      <label for="judul_buku" class="form-label">Kategori Buku</label>
-      <input readonly type="text" class="form-control" id="judul_buku" name="judul_buku" value="<?= $data['Kategori_buku_2201010538'] ?>">
+      <label for="nama" class="form-label">jurusan</label>
+      <input readonly type="text" class="form-control" id="nama" name="nama" value="<?= $data['jurusan'] ?>">
     </div>
     <div class="mb-3">
-      <label for="penerbit" class="form-label">Penerbit</label>
-      <input readonly type="text" class="form-control" id="penerbit" name="penerbit" value="<?= $data['Penerbit_2201010538'] ?>">
+      <label for="prodi" class="form-label">prodi</label>
+      <input readonly type="text" class="form-control" id="prodi" name="prodi" value="<?= $data['prodi'] ?>">
     </div>
     <div class="mb-3">
-      <label for="penulis" class="form-label">Penulis</label>
-      <input readonly type="text" class="form-control" id="penulis" name="penulis" value="<?= $data['Penulis_2201010538'] ?>">
+      <label for="gender" class="form-label">gender</label>
+      <input readonly type="text" class="form-control" id="gender" name="gender" value="<?= $data['gender'] ?>">
     </div>
     <div class="mb-3">
-      <label for="stok" class="form-label">Stok</label>
-      <input readonly type="number" class="form-control" id="stok" name="stok" value="<?= $data['Stok_2201010538'] ?>">
+      <label for="tanggal_lahir" class="form-label">tanggal_lahir</label>
+      <input readonly type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" value="<?= $data['tanggal_lahir'] ?>">
     </div>
     <div class="mb-3">
-      <label for="harga" class="form-label">Harga</label>
-      <input readonly type="number" class="form-control" id="harga" name="harga" value="<?= $data['Harga_2201010538'] ?>">
+      <label for="tanggal_bergabung" class="form-label">tanggal_bergabung</label>
+      <input readonly type="date" class="form-control" id="tanggal_bergabung" name="tanggal_bergabung" value="<?= $data['tanggal_bergabung'] ?>">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
