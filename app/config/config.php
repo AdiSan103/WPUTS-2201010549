@@ -17,7 +17,7 @@ session_start();
 */
 
 // membuat koneksi ke database
-$requestDB = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+$requestDB = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
 // memeriksa apakah koneksi berhasil
 if ($requestDB->connect_errno) {

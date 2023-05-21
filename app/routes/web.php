@@ -84,9 +84,9 @@ handle_route('GET','/login','login','index');
 
 handle_route('POST','/login/go','login','go');
 
-handle_route('GET','/register','register','index');
+// handle_route('GET','/register','register','index');
 
-handle_route('POST','/register/go','register','go');
+// handle_route('POST','/register/go','register','go');
 
 // cek cookie 'login_user'
 if(isset($_COOKIE['login_user']) && checkCookie($_COOKIE['login_user']) ) {
