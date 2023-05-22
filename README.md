@@ -4,6 +4,6 @@
 
 1. menjalankan xampp -> apache serve dan mysql
 
-2. buka tab web browser link (http://localhost/tugas_uts_semester2/database.php)
+2. buka tab web browser link (http://localhost/WPUTS-2201010549/database.php)
 
-3. buka tab web browser link (http://localhost/tugas_uts_semester2)
+3. buka tab web browser link (http://localhost/WPUTS-2201010549)
