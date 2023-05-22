@@ -1,7 +1,7 @@
 <?php 
 
 //site name
-define('SITE_NAME', 'tugas_uts_semester2');
+define('SITE_NAME', 'WPUTS-2201010549');
 
 //DB Params
 define('DB_HOST', 'localhost');
